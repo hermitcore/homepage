@@ -73,7 +73,7 @@ The following commad starts within the new docker container a shell and mounts f
 $ docker run -i -t -v ~/src:/src rwthos/hermitcore:latest
 ```
 
-Within the shell the croos toolchain can be used to build HermitCore applications.
+Within the shell the cross-toolchain can be used to build HermitCore applications.
 
 If you want to build the toolchain yourself, have a look at the repository [hermit-toolchain](https://github.com/RWTH-OS/hermit-toolchain), which contains scripts to build the whole toolchain.
 
@@ -117,7 +117,7 @@ cmake-3.7.2-Linux-x86_64.tar.gz         100%[===================>]  29,26M  3,74
 
 -- Unpacking CMake
 -- Local CMake v3.7.2 installed to cmake/cmake-3.7.2-Linux-x86_64
--- Next time you source this script, no download will be neccessary
+-- Next time you source this script, no download will be necessary
 ```
 
 So before you build HermitCore you have to source the `local-cmake.sh` script
