@@ -1,7 +1,7 @@
 # Site settings
 title: HermitCore
 description: "A Unikernel for Extreme-Scale Computing"
-url: "https://www.hermitcore.org"
+url: "http://www.hermitcore.org"
 
 # Secondary Parameters
 #baseurl: ""
@@ -40,7 +40,7 @@ defaults:
 # Prose Settings
 prose:
   ignore: ['feed.xml', '/stl', '/ply', '/js', '/plugin', '/lib', '/projectors', '_layouts', '/_includes', 'Gruntfile.js', 'package.json', 'proselinks.jsonp', 'ppanchor.matin', '.gitignore', '/search', '/css', '/img', 'favicon.png','_data/*.json','LICENSES.md','README.md','colorscheme.scss','about.html','blog.html','index.html']
-  siteurl: 'https://www.hermitcore.org'
+  siteurl: 'http://www.hermitcore.org'
   ispp: true
   media: 'img'
   metadata:
