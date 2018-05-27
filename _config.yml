@@ -10,10 +10,10 @@ headercolor: "#FFFFFF"
 logo: img/logos/hermitcore_logo.png
 
 # Tertiary Parameters
-github_username:  RWTH-OS
+github_username:  hermitcore
 #twitter_username:
 #facebook_username:
-project_repository: HermitCore
+project_repository: libhermit
 disqus_shortname: hermitcore
 #g-analytics:
 altmetric: true
