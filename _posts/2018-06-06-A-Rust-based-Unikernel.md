@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Rust-based Unikernel
+title:      A Rust-based Unikernel
 author:     Stefan Lankes
 tags: 	    rust
 subtitle:   First version of a Rust-based libOS
