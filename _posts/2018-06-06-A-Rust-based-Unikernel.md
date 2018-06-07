@@ -27,11 +27,11 @@ $ sudo apt-get -qq update
 $ sudo apt-get install binutils-hermit newlib-hermit pte-hermit-rs gcc-hermit libhermit-rs
 ```
 
-If you use another operating system, you are able to use Docker to test our code:
+If you use another operating system, you are able to use our Docker image to test the kernel:
 
 ```bash
-$ docker pull rwthos/hermitcore
-$ docker run -it rwthos/hermitcore:latest
+$ docker pull rwthos/hermitcore-rs
+$ docker run -it rwthos/hermitcore-rs:latest
 ```
 
 After you have successfully installes HermitCore you can test the system by running the stream benchmark.
@@ -45,3 +45,6 @@ If your system supports KVM, you could use *uhyve* to accelerate the boot time:
 ```bash
 $ HERMIT_ISLE=uhyve /opt/hermit/bin/proxy /opt/hermit/x86_64-hermit/extra/benchmarks/stream
 ```
+
+The current version is an experimental version and definitely not stable.
+But it is a good starting point...
