@@ -38,7 +38,7 @@ $ docker run -it rwthos/hermitcore-rs:latest
 If you are able to install HermitCore on Ubuntu 18.04 or to run our docker container, you can test the system for instance by running the stream benchmark.
 
 ```bash
-HERMIT_ISLE=qemu /opt/hermit/bin/proxy /opt/hermit/x86_64-hermit/extra/benchmarks/stream
+HERMIT_ISLE=qemu HERMIT_KVM=0 /opt/hermit/bin/proxy /opt/hermit/x86_64-hermit/extra/benchmarks/stream
 ```
 
 If your system supports KVM, you could use *uhyve* to accelerate the boot time:
