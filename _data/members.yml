@@ -30,3 +30,10 @@
   role: The student next door checking the code style
   bio: TBD
   visible: true
+
+- name: Colin Finck
+  github: ColinFinck
+  img: /img/colinfinck.png
+  role: Porting it all to Rust
+  bio: Colin has ported HermitCore to Rust within his <a href="https://colinfinck.de/thesis_CF_2018-04-12_2.pdf">master's thesis</a> and is now improving HermitCore-rs as a research assistant at <a href="http://www.acs.eonerc.rwth-aachen.de">ACS</a>.
+  visible: true
