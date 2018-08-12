@@ -58,7 +58,7 @@ toolchain, which can be installed as follows:
 ```bash
 $ echo "deb [trusted=yes] https://dl.bintray.com/hermitcore/ubuntu bionic main" | sudo tee -a /etc/apt/sources.list
 $ sudo apt-get -qq update
-$ sudo apt-get install binutils-hermit binutils-hermit newlib-hermit pte-hermit gcc-hermit libhermit
+$ sudo apt-get install binutils-hermit binutils-hermit newlib-hermit pte-hermit gcc-hermit libomp-hermit libhermit
 ```
 
 For non-Debian based systems, a docker image with the complete toolchain is provided and can be installed as follows:
@@ -163,7 +163,7 @@ If the proxy is register as loader to the Linux system, HermitCore applications 
 The proxy can be registered with following command.
 
 ```bash
-$ sudo -c sh 'echo ":hermit:M:7:\\x42::/opt/hermit/bin/proxy:" > /proc/sys/fs/binfmt_misc/register'
+$ sudo -c sh 'echo ":hermit:M:7:\\xff::/opt/hermit/bin/proxy:" > /proc/sys/fs/binfmt_misc/register'
 $ # dirct call of a HermitCore appliaction
 $ /opt/hermit/x86_64-hermit/extra/tests/hello
 ```
