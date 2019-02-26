@@ -89,7 +89,7 @@ such as:
 To build HermitCore from source (without compiler), the repository with its submodules has to be cloned.
 
 ```bash
-$ git clone git@github.com:RWTH-OS/HermitCore.git
+$ git clone https://github.com/hermitcore/libhermit.git
 $ cd HermitCore
 $ git submodule init
 $ git submodule update
