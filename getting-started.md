@@ -164,7 +164,7 @@ The proxy can be registered with following command.
 
 ```bash
 $ sudo -c sh 'echo ":hermit:M:7:\\xff::/opt/hermit/bin/proxy:" > /proc/sys/fs/binfmt_misc/register'
-$ # dirct call of a HermitCore appliaction
+$ # direct call of a HermitCore appliaction
 $ /opt/hermit/x86_64-hermit/extra/tests/hello
 ```
 
@@ -191,7 +191,7 @@ $ make install DESTDIR=~/hermit-build
 $ cd ~/hermit-build/opt/hermit
 $ # using QEMU
 $ HERMIT_ISLE=qemu bin/proxy x86_64-hermit/extra/tests/hello
-$ # using uHyve
+$ # using uhyve
 $ HERMIT_ISLE=uhyve bin/proxy x86_64-hermit/extra/tests/hello
 ```
 
@@ -201,7 +201,7 @@ Furthermore, it expects that the executable is called `qemu-system-x86_64`.
 
 With `HERMIT_ISLE=uhyve`, the application will be started within a thin
 hypervisor powered by Linux's KVM API and therefore requires *KVM* support.
-uhyve has a considerably smaller startup time than QEMU, but lacks some features
+`Uhyve` has a considerably smaller startup time than QEMU, but lacks some features
 such as GDB debugging.
 In principle, it is an extension of [ukvm](https://www.usenix.org/sites/default/files/conference/protected-files/hotcloud16_slides_williams.pdf).
 
