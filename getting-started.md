@@ -45,10 +45,17 @@ Create your own fork, send us a pull request, and chat with us on [Slack](https:
 The build process works currently only on **x86-based Linux** systems. To build
 the HermitCore kernel and applications you need:
 
+ * git
  * CMake
  * Netwide Assember (NASM)
  * recent host compiler such as GCC
+ * hexdump (included in `bsdmainutils` package)
  * HermitCore cross-toolchain, i.e. Binutils, GCC, newlib, pthreads
+
+On a Debian-based system the requirements can be installed as follows:
+```bash
+$ sudo apt-get install git cmake nasm gcc bsdmainutils
+```
 
 ### HermitCore cross-toolchain
 
