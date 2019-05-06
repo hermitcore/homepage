@@ -37,7 +37,7 @@ At the [30th International Conference on Architecture of Computing Systems](http
 
 ## Contributing
 
-HermitCore is being developed on [GitHub](https://github.com/RWTH-OS/HermitCore).
+HermitCore is being developed on [GitHub](https://github.com/hermitcore/libhermit).
 Create your own fork, send us a pull request, and chat with us on [Slack](https://radiant-ridge-95061.herokuapp.com).
 
 ## Requirements
@@ -75,7 +75,7 @@ $ docker run -i -t -v ~/src:/src rwthos/hermitcore:latest
 
 Within the shell the cross-toolchain can be used to build HermitCore applications.
 
-If you want to build the toolchain yourself, have a look at the repository [hermit-toolchain](https://github.com/RWTH-OS/hermit-toolchain), which contains scripts to build the whole toolchain.
+If you want to build the toolchain yourself, have a look at the repository [hermit-toolchain](https://github.com/hermitcore/hermit-toolchain), which contains scripts to build the whole toolchain.
 
 Depending on how you want to use HermitCore, you might need additional packages
 such as:
@@ -87,10 +87,10 @@ such as:
 ### Preliminary work
 
 To build HermitCore from source (without compiler), the repository with its submodules has to be cloned.
-
+ HermitCore
 ```bash
 $ git clone https://github.com/hermitcore/libhermit.git
-$ cd HermitCore
+$ cd libhermit
 $ git submodule init
 $ git submodule update
 ```
