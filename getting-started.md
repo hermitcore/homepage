@@ -31,7 +31,7 @@ This reduces the demand on resources and improves the boot time, which is an exc
 HermitCore is the result of a research project at RWTH Aachen University and is currently an experimental approach, i.e., not production ready.
 Please use it carefully.
 
-The first [paper](https://dl.acm.org/authorize?N04880), which sketchs the design of HermitCore, was presented at the [International Workshop on Runtime and Operating Systems for Supercomputers (ROSS 2016)](http://www.mcs.anl.gov/events/workshops/ross/2016/program.php).
+The first [paper](https://dl.acm.org/authorize?N04880), which sketches the design of HermitCore, was presented at the [International Workshop on Runtime and Operating Systems for Supercomputers (ROSS 2016)](http://www.mcs.anl.gov/events/workshops/ross/2016/program.php).
 The [slides](/pdf/ross2016.pdf) summarize the design and present the first performance results.
 At the [30th International Conference on Architecture of Computing Systems](http://arcs2017.itec.kit.edu) the migration from a pure multi-kernel to a kernel, which supports a multi-kernel and also a unikernel mode, was [presented](http://dx.doi.org/10.1007/978-3-319-54999-6_6).
 
@@ -67,7 +67,7 @@ For non-Debian based systems, a docker image with the complete toolchain is prov
 $ docker pull rwthos/hermitcore
 ```
 
-The following commad starts within the new docker container a shell and mounts from the host system the directory `~/src` to `/src`:
+The following command starts within the new docker container a shell and mounts from the host system the directory `~/src` to `/src`:
 
 ```bash
 $ docker run -i -t -v ~/src:/src rwthos/hermitcore:latest
@@ -125,7 +125,7 @@ everytime you open a new terminal.
 
 ### Building the library operating systems and its examples
 
-To build HermitCore go to the directory with the source code, create a `build` directory, and call in the new dirctory `cmake` followed by `make`.
+To build HermitCore go to the directory with the source code, create a `build` directory, and call in the new directory `cmake` followed by `make`.
 
 ```bash
 $ mkdir build
@@ -159,12 +159,16 @@ $ make install
 Part of HermitCore is a small helper tool, which is called *proxy*.
 This tool helps to start HermitCore applications within a virtual machine or bare-metal on a NUMA node.
 In principle it is a bridge to the Linux system.
-If the proxy is register as loader to the Linux system, HermitCore applications can be started like common Linux applications.
+If the proxy is registered as loader to the Linux system, HermitCore applications can be started like common Linux applications.
 The proxy can be registered with following command.
 
 ```bash
 $ sudo -c sh 'echo ":hermit:M:7:\\xff::/opt/hermit/bin/proxy:" > /proc/sys/fs/binfmt_misc/register'
+<<<<<<< HEAD
 $ # direct call of a HermitCore appliaction
+=======
+$ # direct call of a HermitCore application
+>>>>>>> fix typo at getting-started.md
 $ /opt/hermit/x86_64-hermit/extra/tests/hello
 ```
 
@@ -240,7 +244,7 @@ and enable the network support:
 $ HERMIT_ISLE=uhyve HERMIT_IP="10.0.5.3" HERMIT_GATEWAY="10.0.5.1" HERMIT_MASk="255.255.255.0" HERMIT_NETIF=tap100 bin/proxy x86_64-hermit/extra/tests/hello
 ```
 
-If `qemu` is used as hyervisor, the virtual machine emulates an RTL8139 ethernet interface and opens at least one TCP/IP ports.
+If `qemu` is used as hypervisor, the virtual machine emulates an RTL8139 ethernet interface and opens at least one TCP/IP ports.
 It is used for the communication between HermitCore application and its proxy.
 With the environment variable `HERMIT_PORT`, the default port (18766) can be changed for the communication.
 
