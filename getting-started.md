@@ -171,11 +171,7 @@ The proxy can be registered with following command.
 
 ```bash
 $ sudo -c sh 'echo ":hermit:M:7:\\xff::/opt/hermit/bin/proxy:" > /proc/sys/fs/binfmt_misc/register'
-<<<<<<< HEAD
-$ # direct call of a HermitCore appliaction
-=======
 $ # direct call of a HermitCore application
->>>>>>> fix typo at getting-started.md
 $ /opt/hermit/x86_64-hermit/extra/tests/hello
 ```
 
