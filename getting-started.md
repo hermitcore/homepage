@@ -31,13 +31,13 @@ This reduces the demand on resources and improves the boot time, which is an exc
 HermitCore is the result of a research project at RWTH Aachen University and is currently an experimental approach, i.e., not production ready.
 Please use it carefully.
 
-The first [paper](https://dl.acm.org/authorize?N04880), which sketchs the design of HermitCore, was presented at the [International Workshop on Runtime and Operating Systems for Supercomputers (ROSS 2016)](http://www.mcs.anl.gov/events/workshops/ross/2016/program.php).
+The first [paper](https://dl.acm.org/authorize?N04880), which sketches the design of HermitCore, was presented at the [International Workshop on Runtime and Operating Systems for Supercomputers (ROSS 2016)](http://www.mcs.anl.gov/events/workshops/ross/2016/program.php).
 The [slides](/pdf/ross2016.pdf) summarize the design and present the first performance results.
 At the [30th International Conference on Architecture of Computing Systems](http://arcs2017.itec.kit.edu) the migration from a pure multi-kernel to a kernel, which supports a multi-kernel and also a unikernel mode, was [presented](http://dx.doi.org/10.1007/978-3-319-54999-6_6).
 
 ## Contributing
 
-HermitCore is being developed on [GitHub](https://github.com/RWTH-OS/HermitCore).
+HermitCore is being developed on [GitHub](https://github.com/hermitcore/libhermit).
 Create your own fork, send us a pull request, and chat with us on [Slack](https://radiant-ridge-95061.herokuapp.com).
 
 ## Requirements
@@ -45,10 +45,17 @@ Create your own fork, send us a pull request, and chat with us on [Slack](https:
 The build process works currently only on **x86-based Linux** systems. To build
 the HermitCore kernel and applications you need:
 
+ * git
  * CMake
  * Netwide Assember (NASM)
  * recent host compiler such as GCC
+ * hexdump (included in `bsdmainutils` package)
  * HermitCore cross-toolchain, i.e. Binutils, GCC, newlib, pthreads
+
+On a Debian-based system the requirements can be installed as follows:
+```bash
+$ sudo apt-get install git cmake nasm gcc bsdmainutils
+```
 
 ### HermitCore cross-toolchain
 
@@ -67,7 +74,7 @@ For non-Debian based systems, a docker image with the complete toolchain is prov
 $ docker pull rwthos/hermitcore
 ```
 
-The following commad starts within the new docker container a shell and mounts from the host system the directory `~/src` to `/src`:
+The following command starts within the new docker container a shell and mounts from the host system the directory `~/src` to `/src`:
 
 ```bash
 $ docker run -i -t -v ~/src:/src rwthos/hermitcore:latest
@@ -75,7 +82,7 @@ $ docker run -i -t -v ~/src:/src rwthos/hermitcore:latest
 
 Within the shell the cross-toolchain can be used to build HermitCore applications.
 
-If you want to build the toolchain yourself, have a look at the repository [hermit-toolchain](https://github.com/RWTH-OS/hermit-toolchain), which contains scripts to build the whole toolchain.
+If you want to build the toolchain yourself, have a look at the repository [hermit-toolchain](https://github.com/hermitcore/hermit-toolchain), which contains scripts to build the whole toolchain.
 
 Depending on how you want to use HermitCore, you might need additional packages
 such as:
@@ -87,45 +94,17 @@ such as:
 ### Preliminary work
 
 To build HermitCore from source (without compiler), the repository with its submodules has to be cloned.
-
+ HermitCore
 ```bash
 $ git clone https://github.com/hermitcore/libhermit.git
-$ cd HermitCore
+$ cd libhermit
 $ git submodule init
 $ git submodule update
 ```
 
-We require a fairly recent version of CMake (`3.7`) which is not yet present in
-most Linux distributions. We therefore provide a helper script that fetches the
-required CMake binaries from the upstream project and stores them locally, so
-you only need to download it once.
-
-```bash
-$ . cmake/local-cmake.sh
--- Downloading CMake
---2017-03-28 16:13:37--  https://cmake.org/files/v3.7/cmake-3.7.2-Linux-x86_64.tar.gz
-Loaded CA certificate '/etc/ssl/certs/ca-certificates.crt'
-Resolving cmake.org... 66.194.253.19
-Connecting to cmake.org|66.194.253.19|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 30681434 (29M) [application/x-gzip]
-Saving to: ‘cmake-3.7.2-Linux-x86_64.tar.gz’
-
-cmake-3.7.2-Linux-x86_64.tar.gz         100%[===================>]  29,26M  3,74MB/s    in 12s     
-
-2017-03-28 16:13:50 (2,48 MB/s) - ‘cmake-3.7.2-Linux-x86_64.tar.gz’ saved [30681434/30681434]
-
--- Unpacking CMake
--- Local CMake v3.7.2 installed to cmake/cmake-3.7.2-Linux-x86_64
--- Next time you source this script, no download will be necessary
-```
-
-So before you build HermitCore you have to source the `local-cmake.sh` script
-everytime you open a new terminal.
-
 ### Building the library operating systems and its examples
 
-To build HermitCore go to the directory with the source code, create a `build` directory, and call in the new dirctory `cmake` followed by `make`.
+To build HermitCore go to the directory with the source code, create a `build` directory, and call in the new directory `cmake` followed by `make`.
 
 ```bash
 $ mkdir build
@@ -159,12 +138,12 @@ $ make install
 Part of HermitCore is a small helper tool, which is called *proxy*.
 This tool helps to start HermitCore applications within a virtual machine or bare-metal on a NUMA node.
 In principle it is a bridge to the Linux system.
-If the proxy is register as loader to the Linux system, HermitCore applications can be started like common Linux applications.
+If the proxy is registered as loader to the Linux system, HermitCore applications can be started like common Linux applications.
 The proxy can be registered with following command.
 
 ```bash
 $ sudo -c sh 'echo ":hermit:M:7:\\xff::/opt/hermit/bin/proxy:" > /proc/sys/fs/binfmt_misc/register'
-$ # direct call of a HermitCore appliaction
+$ # direct call of a HermitCore application
 $ /opt/hermit/x86_64-hermit/extra/tests/hello
 ```
 
@@ -240,7 +219,7 @@ and enable the network support:
 $ HERMIT_ISLE=uhyve HERMIT_IP="10.0.5.3" HERMIT_GATEWAY="10.0.5.1" HERMIT_MASk="255.255.255.0" HERMIT_NETIF=tap100 bin/proxy x86_64-hermit/extra/tests/hello
 ```
 
-If `qemu` is used as hyervisor, the virtual machine emulates an RTL8139 ethernet interface and opens at least one TCP/IP ports.
+If `qemu` is used as hypervisor, the virtual machine emulates an RTL8139 ethernet interface and opens at least one TCP/IP ports.
 It is used for the communication between HermitCore application and its proxy.
 With the environment variable `HERMIT_PORT`, the default port (18766) can be changed for the communication.
 
