@@ -102,34 +102,6 @@ $ git submodule init
 $ git submodule update
 ```
 
-We require a fairly recent version of CMake (`3.7`) which is not yet present in
-most Linux distributions. We therefore provide a helper script that fetches the
-required CMake binaries from the upstream project and stores them locally, so
-you only need to download it once.
-
-```bash
-$ . cmake/local-cmake.sh
--- Downloading CMake
---2017-03-28 16:13:37--  https://cmake.org/files/v3.7/cmake-3.7.2-Linux-x86_64.tar.gz
-Loaded CA certificate '/etc/ssl/certs/ca-certificates.crt'
-Resolving cmake.org... 66.194.253.19
-Connecting to cmake.org|66.194.253.19|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 30681434 (29M) [application/x-gzip]
-Saving to: ‘cmake-3.7.2-Linux-x86_64.tar.gz’
-
-cmake-3.7.2-Linux-x86_64.tar.gz         100%[===================>]  29,26M  3,74MB/s    in 12s     
-
-2017-03-28 16:13:50 (2,48 MB/s) - ‘cmake-3.7.2-Linux-x86_64.tar.gz’ saved [30681434/30681434]
-
--- Unpacking CMake
--- Local CMake v3.7.2 installed to cmake/cmake-3.7.2-Linux-x86_64
--- Next time you source this script, no download will be necessary
-```
-
-So before you build HermitCore you have to source the `local-cmake.sh` script
-everytime you open a new terminal.
-
 ### Building the library operating systems and its examples
 
 To build HermitCore go to the directory with the source code, create a `build` directory, and call in the new directory `cmake` followed by `make`.
